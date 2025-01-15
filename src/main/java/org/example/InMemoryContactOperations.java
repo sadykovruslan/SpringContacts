@@ -1,40 +1,32 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.example.models.Contact;
+import org.example.models.ContactStorage;
 
-public class InMemoryPersonOperations implements PersonOperations {
+public class InMemoryContactOperations implements ContactOperations {
 
-    private long contactId = 1L;
-    private final Map <Long, Contact> contactMap;
-
-    public InMemoryPersonOperations() {
-        this.contactMap = new HashMap<>();
-    }
 
     @Override
     public void getAllContacts() {
-        for (int i = 0; i < contactMap.size(); i++){
-            System.out.println(contactMap.get(i));
+        for (int i = 0; i < ContactStorage.getContacts().size(); i++) {
+            ContactStorage.getContacts().get(i);
         }
     }
 
     @Override
-    public Contact getContact(long contactId) {
-        return  contactMap.get(contactId);
+    public Contact getContact(int id) {
+        return ContactStorage.getContacts().get(id);
     }
 
     @Override
-    public void addContact(String name, String phone, String email) {
-        Contact contact = new Contact(name, phone, email);
-        contactMap.put(contactId++, contact);
-
+    public void addContact(String name,String surname,String phone, String mail) {
+        Contact contact = new Contact(name, surname, phone,mail);
+        ContactStorage.getContacts().put(ContactStorage.getContacts().size()+1, contact); //добавляем в конец мапы. Поэтому ключ: size+1
     }
 
     @Override
-    public Contact correctCurrentContact(long contactId, String name, String phone, String email) {
-        Contact newContact = new Contact(name, phone, email);
-        contactMap.put(contactId, newContact);
-        return new Contact(name, phone, email);
+    public void changeContacts(int id, String name, String surname, String phoneNumber, String mail) {
+        Contact contact = new Contact(name, surname, phoneNumber,mail); //создаем новый контакт и перезаписываем его по тому же ключу
+        ContactStorage.getContacts().put(id, contact);
     }
 }

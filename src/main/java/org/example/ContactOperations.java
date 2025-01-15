@@ -1,9 +1,11 @@
 package org.example;
 
-public interface PersonOperations {
+import org.example.models.Contact;
+
+public interface ContactOperations {
 
     void getAllContacts();
-    Contact getContact(long contactId);
-    void addContact(String name, String phone, String email);
-    Contact correctCurrentContact(long contactId, String name, String phone, String email);
+    Contact getContact(int id);
+    void addContact(String name,String surname,String phoneNumber, String mail);
+    void changeContacts(int id, String name,String surname,String phoneNumber, String mail);
 }

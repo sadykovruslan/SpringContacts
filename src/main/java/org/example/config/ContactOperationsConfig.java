@@ -1,9 +1,16 @@
-package org.example;
+package org.example.config;
 
+import org.example.InMemoryContactOperations;
+import org.example.ContactOperations;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration
 public class ContactOperationsConfig {
-    public 
+
+    @Bean
+    public ContactOperations contactOperations(){
+        return new InMemoryContactOperations();
+    }
 }
+
