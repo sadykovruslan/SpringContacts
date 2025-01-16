@@ -14,19 +14,19 @@ public class InMemoryContactOperations implements ContactOperations {
     }
 
     @Override
-    public Contact getContact(int id) {
+    public Contact getContact(String id) {
         return ContactStorage.getContacts().get(id);
     }
 
     @Override
     public void addContact(String name,String surname,String phone, String mail) {
-        Contact contact = new Contact(name, surname, phone,mail);
-        ContactStorage.getContacts().put(ContactStorage.getContacts().size()+1, contact); //добавляем в конец мапы. Поэтому ключ: size+1
+        Contact contact = new Contact(name, surname, phone, mail);
+        ContactStorage.getContacts().put(Integer.toString(ContactStorage.getContacts().size()+1), contact); //добавляем в конец мапы. Поэтому ключ: size+1
     }
 
     @Override
-    public void changeContacts(int id, String name, String surname, String phoneNumber, String mail) {
-        Contact contact = new Contact(name, surname, phoneNumber,mail); //создаем новый контакт и перезаписываем его по тому же ключу
+    public void changeContacts(String id, String name, String surname, String phone, String mail) {
+        Contact contact = new Contact(name, surname, phone,mail); //создаем новый контакт и перезаписываем его по тому же ключу
         ContactStorage.getContacts().put(id, contact);
     }
 }

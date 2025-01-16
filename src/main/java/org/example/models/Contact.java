@@ -1,8 +1,8 @@
 package org.example.models;
 
 public class Contact {
-    private final String name;
-    private final String surname;
+    private String name;
+    private String surname;
     private String phone;
     private String mail;
 
@@ -15,6 +15,10 @@ public class Contact {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
