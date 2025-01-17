@@ -3,7 +3,10 @@ package org.example.controller;
 import java.util.List;
 import org.example.ContactDto;
 import org.example.facade.ContactFacade;
+import org.example.models.ContactStorage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,17 +22,12 @@ public class ContactController {
     }
 
     @GetMapping("/all")
-    public void getAllContacts(){
-       contactFacade.getAllContacts();
+    public ResponseEntity<List<ContactDto>> getAllContacts() {
+        return new ResponseEntity<>(contactFacade.getAllContacts(), HttpStatus.OK);
     }
 
-//    @GetMapping("/all")
-//    public List<ContactDto> getAllContacts() {
-//        return contactFacade.getAllContacts();
-//    }
-
     @GetMapping("/{id}")
-    public ContactDto getContact(@PathVariable ("id") String id){
+    public ContactDto getContact(@PathVariable ("id") int id){
         return contactFacade.getContact(id);
     }
 
@@ -42,7 +40,7 @@ public class ContactController {
     }
 
     @PutMapping("/change/{id}")
-    public void changeContact(@RequestParam ("id") String id,
+    public void changeContact(@RequestParam ("id") int id,
                               @RequestParam ("name") String name,
                               @RequestParam ("surname") String surname,
                               @RequestParam ("phone") String phoneNumber,

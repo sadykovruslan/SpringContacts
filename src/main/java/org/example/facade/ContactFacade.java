@@ -6,6 +6,8 @@ import org.example.models.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContactFacade {
     private final ContactOperations contactOperations;
@@ -15,11 +17,13 @@ public class ContactFacade {
         this.contactOperations = contactOperations;
     }
 
-    public void getAllContacts(){
-        contactOperations.getAllContacts();
+    public List<ContactDto> getAllContacts(){
+        return contactOperations.getAllContacts().stream()
+                .map(ContactDto::new)
+                .toList();
     }
 
-    public ContactDto getContact(String id){
+    public ContactDto getContact(int id){
         Contact contact = contactOperations.getContact(id);
         return new ContactDto(contact);
     }
@@ -29,7 +33,7 @@ public class ContactFacade {
         contactOperations.addContact(name, surname, phone, mail);
     }
 
-    public void changeContact(String id, String name, String surname, String phoneNumber, String mail){
+    public void changeContact(int id, String name, String surname, String phoneNumber, String mail){
         contactOperations.changeContacts(id, name, surname, phoneNumber, mail);
     }
 }

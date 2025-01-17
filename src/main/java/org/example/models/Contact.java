@@ -6,6 +6,9 @@ public class Contact {
     private String phone;
     private String mail;
 
+    public Contact() {
+            }
+
     public Contact(String name, String surname, String phone, String mail) {
         this.name = name;
         this.surname = surname;
@@ -23,6 +26,10 @@ public class Contact {
 
     public String getSurname() {
         return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getPhone() {
