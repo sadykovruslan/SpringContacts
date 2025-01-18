@@ -23,7 +23,7 @@ public class ContactFacade {
                 .toList();
     }
 
-    public ContactDto getContact(int id){
+    public ContactDto getContact(String id){
         Contact contact = contactOperations.getContact(id);
         return new ContactDto(contact);
     }
@@ -33,7 +33,7 @@ public class ContactFacade {
         contactOperations.addContact(name, surname, phone, mail);
     }
 
-    public void changeContact(int id, String name, String surname, String phoneNumber, String mail){
+    public void changeContact(String id, String name, String surname, String phoneNumber, String mail){
         contactOperations.changeContacts(id, name, surname, phoneNumber, mail);
     }
 }

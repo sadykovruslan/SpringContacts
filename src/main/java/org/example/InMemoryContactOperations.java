@@ -6,15 +6,17 @@ import java.util.List;
 
 public class InMemoryContactOperations implements ContactOperations {
 
+
     @Override
     public List<Contact> getAllContacts() {
-        return ContactStorage.contacts
-        .stream()
-        .toList();
+            return ContactStorage.contacts
+                    .values()
+                    .stream()
+                    .toList();
     }
 
     @Override
-    public Contact getContact(int id) {
+    public Contact getContact(String id) {
         return ContactStorage.contacts.get(id);
     }
 
@@ -26,16 +28,16 @@ public class InMemoryContactOperations implements ContactOperations {
         contact.setPhone(phone);
         contact.setMail(mail);
 
-        ContactStorage.contacts.add(ContactStorage.contacts.size()+1, contact); //добавляем в конец мапы. Поэтому ключ: size+1
+        ContactStorage.contacts.put(Integer.toString(ContactStorage.contacts.size()+1), contact); //добавляем в конец мапы. Поэтому ключ: size+1
     }
 
     @Override
-    public void changeContacts(int id, String name, String surname, String phone, String mail) {
+    public void changeContacts(String id, String name, String surname, String phone, String mail) {
         Contact contact = new Contact();
         contact.setName(name);
         contact.setSurname(surname);
         contact.setPhone(phone);
         contact.setMail(mail);
-        ContactStorage.contacts.add(id, contact);
+        ContactStorage.contacts.put(id, contact);
     }
 }

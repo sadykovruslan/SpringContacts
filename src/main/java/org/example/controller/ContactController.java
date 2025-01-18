@@ -27,7 +27,7 @@ public class ContactController {
     }
 
     @GetMapping("/{id}")
-    public ContactDto getContact(@PathVariable ("id") int id){
+    public ContactDto getContact(@PathVariable ("id") String id){
         return contactFacade.getContact(id);
     }
 
@@ -40,7 +40,7 @@ public class ContactController {
     }
 
     @PutMapping("/change/{id}")
-    public void changeContact(@RequestParam ("id") int id,
+    public void changeContact(@RequestParam ("id") String id,
                               @RequestParam ("name") String name,
                               @RequestParam ("surname") String surname,
                               @RequestParam ("phone") String phoneNumber,
