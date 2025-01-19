@@ -40,7 +40,7 @@ public class ContactController {
     }
 
     @PutMapping("/change/{id}")
-    public void changeContact(@RequestParam ("id") String id,
+    public void changeContact(@PathVariable ("id") String id,
                               @RequestParam ("name") String name,
                               @RequestParam ("surname") String surname,
                               @RequestParam ("phone") String phoneNumber,
