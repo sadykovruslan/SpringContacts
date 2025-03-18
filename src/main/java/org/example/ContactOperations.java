@@ -6,6 +6,6 @@ public interface ContactOperations {
 
     List<Contact> getAllContacts();
     Contact getContact(String id);
-    void addContact(String name,String surname,String phoneNumber, String mail);
+    Contact addContact(String name,String surname,String phoneNumber, String mail);
     void changeContacts(String id, String name,String surname,String phoneNumber, String mail);
 }

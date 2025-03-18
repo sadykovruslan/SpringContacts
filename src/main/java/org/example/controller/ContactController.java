@@ -32,11 +32,11 @@ public class ContactController {
     }
 
     @PostMapping("/add")
-    public void addContact(@RequestParam ("name") String name,
+    public ContactDto addContact(@RequestParam ("name") String name,
                            @RequestParam ("surname") String surname,
                            @RequestParam ("phone") String phone,
                            @RequestParam ("mail") String mail){
-        contactFacade.addContact(name, surname, phone, mail);
+        return contactFacade.addContact(name, surname, phone, mail);
     }
 
     @PutMapping("/change/{id}")

@@ -29,8 +29,9 @@ public class ContactFacade {
     }
 
 
-    public void addContact(String name,String surname,String phone, String mail){
-        contactOperations.addContact(name, surname, phone, mail);
+    public ContactDto addContact(String name,String surname,String phone, String mail){
+        Contact contact = contactOperations.addContact(name, surname, phone,mail);
+        return new ContactDto(contact);
     }
 
     public void changeContact(String id, String name, String surname, String phoneNumber, String mail){

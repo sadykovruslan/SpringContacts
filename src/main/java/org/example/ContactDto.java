@@ -5,38 +5,38 @@ import org.example.models.Contact;
 
 public class ContactDto {
 
-    @JsonProperty("contactName")
-    private final String contactName;
+    @JsonProperty("name")
+    private final String name;
 
-    @JsonProperty("contactSurname")
-    private final String contactSurname;
+    @JsonProperty("surname")
+    private final String surname;
 
-    @JsonProperty("contactPhone")
-    private final String contactPhone;
+    @JsonProperty("phone")
+    private final String phone;
 
-    @JsonProperty("contactMail")
-    private final String contactMail;
+    @JsonProperty("mail")
+    private final String mail;
 
     public ContactDto(Contact contact) {
-        this.contactName = contact.getName();
-        this.contactSurname = contact.getSurname();
-        this.contactPhone = contact.getPhone();
-        this.contactMail = contact.getMail();
+        this.name = contact.getName();
+        this.surname = contact.getSurname();
+        this.phone = contact.getPhone();
+        this.mail = contact.getMail();
     }
 
-    public String getContactName(){
-        return contactName;
+    public String getName(){
+        return name;
     }
 
-    public String getContactSurname() {
-        return contactSurname;
+    public String getSurname() {
+        return surname;
     }
 
-    public String getContactPhone(){
-        return  contactPhone;
+    public String getPhone(){
+        return phone;
     }
 
-    public String getContactMail(){
-        return contactMail;
+    public String getMail(){
+        return mail;
     }
 }

@@ -1,8 +1,6 @@
 package org.example.models;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ContactStorage {
@@ -14,8 +12,4 @@ public class ContactStorage {
         contacts.put("3", new Contact("Egor", "Sidorov", "987654321","3@dsd.ru"));
         contacts.put("4", new Contact("Artur", "Sergeev", "789132456","14dsd.ru"));
     }
-
-//    public static List<Contact> getContacts(){
-//        return contactMap;
-//    }
 }

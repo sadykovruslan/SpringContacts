@@ -21,14 +21,16 @@ public class InMemoryContactOperations implements ContactOperations {
     }
 
     @Override
-    public void addContact(String name, String surname, String phone, String mail) {
+    public Contact addContact(String name, String surname, String phone, String mail) {
         Contact contact = new Contact();
+
         contact.setName(name);
         contact.setSurname(surname);
         contact.setPhone(phone);
         contact.setMail(mail);
 
         ContactStorage.contacts.put(Integer.toString(ContactStorage.contacts.size()+1), contact); //добавляем в конец мапы. Поэтому ключ: size+1
+        return contact;
     }
 
     @Override
